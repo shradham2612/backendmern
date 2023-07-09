@@ -6,3 +6,5 @@ export default async function connect() {
   );
   console.log("Database connected to mongo");
 }
+
+
