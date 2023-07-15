@@ -52,24 +52,45 @@ export async function getResult(req, res) {
 
 
 
-export async function insertResult(req, res) {
+// export async function insertResult(req, res) {
   
-  try {
-          const { username, result, attempts, points, achieved } = req.body;
-          if (!username && !result) throw new Error("Data not provided");
+//   try {
+//           const { username, result, attempts, points, achieved } = req.body;
+//           if (!username && !result) throw new Error("Data not provided");
 
-          Result.create({ username, result, attempts, points, achieved })
-            .then((result) => {
-              res.send({  msg: "Data saved " });
-            })
-            .catch((err) => {
-              res.send({  msg: "error occured" });
-            });
-  } catch (error) {
-           res.json({ error });
+//           Result.create({ username, result, attempts, points, achieved })
+//             .then((result) => {
+//               res.send({  msg: "Data saved " });
+//             })
+//             .catch((err) => {
+//               res.send({  msg: "error occured" });
+//             });
+//   } catch (error) {
+//            res.json({ error });
    
+//   }
+// }
+
+
+
+export async function insertResult(req, res) {
+  try {
+    const { username, result, attempts, points, achieved } = req.body;
+    if (!username && !result) throw new Error("Data not Provided...!");
+
+    Result.create({ username, result, attempts, points, achieved }).then(
+      function (err, data) {
+        res.json({ msg: "Result saved successfully..!" });
+      }
+    );
+  } catch (error) {
+    res.json({ error });
   }
 }
+
+
+
+
 
 
 export async function deleteResult(req, res) {
