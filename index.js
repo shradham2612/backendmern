@@ -44,5 +44,5 @@ connect().then(() => {
     }
   })
   .catch((error) => {
-    console.log("Invalid db connection");
+    console.log(error);
   });
